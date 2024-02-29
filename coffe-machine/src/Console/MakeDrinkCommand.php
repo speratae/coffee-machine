@@ -66,6 +66,11 @@ class MakeDrinkCommand extends Command
         }
 
         $money = $input->getArgument('money');
+        if (!$drinkStrategy->hasEnoughMoney($money)) {
+            $output->writeln(sprintf('The %s costs %.1f.', $drinkType, $drinkStrategy->getPrice()));
+            return;
+        }
+
         $drinkStrategy->makeDrink($money, $output);
 
         $extraHot = $input->getOption('extra-hot');

@@ -7,15 +7,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class MakeChocolate extends MakeDrink
 {
-    protected static $price = 0.6;
+    public function __construct()
+    {
+        parent::__construct(0.6); 
+    }
 
     public function makeDrink(float $money, OutputInterface $output)
     {
-        if ($money < self::$price) {
-            $output->writeln('The chocolate costs 0.6.');
-            return;
-        } else {
-            $output->write('You have ordered a chocolate');
-        }
+        $output->write('You have ordered a chocolate');
+    }
+
+    public function hasEnoughMoney(float $money) {
+        return $money >= $this->price;
     }
 }
