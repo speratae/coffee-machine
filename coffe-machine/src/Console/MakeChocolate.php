@@ -16,8 +16,5 @@ class MakeChocolate extends MakeDrink
     {
         $output->write('You have ordered a chocolate');
     }
-
-    public function hasEnoughMoney(float $money) {
-        return $money >= $this->price;
-    }
+    
 }

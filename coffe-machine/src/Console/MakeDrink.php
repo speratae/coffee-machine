@@ -15,8 +15,6 @@ abstract class MakeDrink
 
     abstract public function makeDrink(float $money, OutputInterface $output);
 
-    abstract public function hasEnoughMoney(float $money);
-
     public function addSugar(int $sugars, OutputInterface $output) {
         if ($sugars > 0) {
                 $output->write(' with ' . $sugars . ' sugars (stick included)');

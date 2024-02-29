@@ -17,8 +17,4 @@ class MakeTea extends MakeDrink
         $output->write('You have ordered a tea');
     }
 
-    public function hasEnoughMoney(float $money) {
-            return $money >= $this->price;
-    }
-
 }
