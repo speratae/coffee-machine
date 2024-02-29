@@ -2,13 +2,12 @@
 
 namespace Pdpaola\CoffeeMachine\Console;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
+
 use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class MakeDrink
 {
-    abstract public function makeDrink(float $money, OutputInterface $output): void;
+    abstract public function makeDrink(float $money, OutputInterface $output);
 
     public function addSugar(int $sugars, OutputInterface $output) {
         if ($sugars >= 0 && $sugars <= 2) {

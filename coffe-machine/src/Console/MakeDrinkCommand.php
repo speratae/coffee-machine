@@ -44,7 +44,31 @@ class MakeDrinkCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $drinkType = strtolower($input->getArgument('drink-type'));
-        if (!in_array($drinkType, ['tea', 'coffee', 'chocolate'])) {
+        switch ($drinkType) {
+            case 'tea':
+                $drinkStrategy = new MakeTea();
+                break;
+            case 'coffee':
+                $drinkStrategy = new MakeCoffee();
+                break;
+            case 'chocolate':
+                $drinkStrategy = new MakeChocolate();
+                break;
+            default:
+                $output->writeln('The drink type should be tea, coffee, or chocolate.');
+                return;
+        }
+
+        $money = $input->getArgument('money');
+        $drinkStrategy->makeDrink($money, $output);
+
+        $extraHot = $input->getOption('extra-hot');
+        $drinkStrategy->makeExtraHot($extraHot, $output);
+        
+        $sugars = $input->getArgument('sugars');
+        $drinkStrategy->addSugar($sugars, $output);
+
+        /*if (!in_array($drinkType, ['tea', 'coffee', 'chocolate'])) {
             $output->writeln('The drink type should be tea, coffee or chocolate.');
         } else {
             /**
@@ -52,7 +76,7 @@ class MakeDrinkCommand extends Command
              * Coffee    --> 0.5
              * Chocolate --> 0.6
              */
-            $money = $input->getArgument('money');
+            /*$money = $input->getArgument('money');
             switch ($drinkType) {
                 case 'tea':
                     if ($money < 0.4) {
@@ -101,6 +125,6 @@ class MakeDrinkCommand extends Command
                 'stick' => $stick ?: 0,
                 'extra_hot' => $extraHot ?: 0,
             ]);
-        }
+        }*/
     }
 }
