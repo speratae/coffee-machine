@@ -76,6 +76,8 @@ class MakeDrinkCommand extends Command
         
         $drinkStrategy->addSugar($sugars, $output);
 
+        $output->writeln('');
+
         /*    $pdo = MysqlPdoClient::getPdo();
 
             $stmt= $pdo->prepare( 'INSERT INTO orders (drink_type, sugars, stick, extra_hot) VALUES (:drink_type, :sugars, :stick, :extra_hot)');

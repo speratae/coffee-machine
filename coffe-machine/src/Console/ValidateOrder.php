@@ -17,7 +17,7 @@ class ValidateOrder
     public static function validateMoney(float $money, float $price, string $drinkType, OutputInterface $output)
     {
         if ($money < $price) {
-            $output->writeln(sprintf('The ' . $drinkType .' costs ' . $price));
+            $output->writeln(sprintf('The ' . $drinkType .' costs ' . $price . '.'));
             return false;
         }
         return true;
