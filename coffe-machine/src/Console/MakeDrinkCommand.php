@@ -59,13 +59,18 @@ class MakeDrinkCommand extends Command
                 return;
         }
 
+        $sugars = $input->getArgument('sugars');
+        if ($sugars < 0 || $sugars > 2) {
+            $output->writeln('The number of sugars should be between 0 and 2.');
+            return;
+        }
+
         $money = $input->getArgument('money');
         $drinkStrategy->makeDrink($money, $output);
 
         $extraHot = $input->getOption('extra-hot');
         $drinkStrategy->makeExtraHot($extraHot, $output);
         
-        $sugars = $input->getArgument('sugars');
         $drinkStrategy->addSugar($sugars, $output);
 
         /*if (!in_array($drinkType, ['tea', 'coffee', 'chocolate'])) {

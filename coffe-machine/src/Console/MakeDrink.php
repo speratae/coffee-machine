@@ -10,10 +10,8 @@ abstract class MakeDrink
     abstract public function makeDrink(float $money, OutputInterface $output);
 
     public function addSugar(int $sugars, OutputInterface $output) {
-        if ($sugars >= 0 && $sugars <= 2) {
-            $output->write(' with ' . $sugars . ' sugars (stick included)');
-        } else {
-            $output->writeln('The number of sugars should be between 0 and 2.');
+        if ($sugars > 0) {
+                $output->write(' with ' . $sugars . ' sugars (stick included)');
         }
     }
 
